@@ -19,7 +19,7 @@ class DashboardController extends AbstractDashboardController
         //return parent::index();
 
         $routeBuilder = $this->container->get(AdminUrlGenerator::class);
-        $url = $routeBuilder->setController(ConferenceCrudController::class)->generateUrl();
+        $url = $routeBuilder->setController(ConferenceCrudController::class)->generateUrl(); //home page url for admin dashboard
 
         return $this->redirect($url);
 
@@ -48,6 +48,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
+        //this is basiclly a navbar generated
         //yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
         yield MenuItem::linkToRoute('Back to the website', 'fas fa-home', 'homepage');

@@ -15,5 +15,11 @@
     </head>
     <body>
         {% block body %}{% endblock %}
+            <h2>Give your feedback!</h2>
+
+            {% for conference in conferences %}
+                <h4>{{ conference }}</h4>
+            {% endfor %}
+        {% endblock %}
     </body>
 </html>
