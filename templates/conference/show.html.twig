@@ -3,24 +3,27 @@
 {% block title %}Conference Guestbook - {{ conference }} {% endblock %}
 
 {% block body %}
-    <h2>{{ conference }} Conference</h2>
+    <h2 class="text-center m-3">{{ conference }} Conference</h2>
 
     {% if comments|length > 0 %}
 
-        <div>There are {{ comments|length }} comments</div>
+        <div class="container mt-3 mb-3">There are {{ comments|length }} comments</div>
 
         {% for comment in comments %}
-            <div class="container mt-3 mb-3">
-                {% if comment.photofilename %}
-                    <img style="width:200px; height: 200px;" class="img-responsive" src="{{ asset('./images/' ~ comment.photofilename) }}" />
-                {% endif %}
+            <div class="container mt-3 mb-3 bg-light">
 
                 <h4>{{ comment.author }}</h4>
+
                 <small>
                     {{ comment.createdAt|format_datetime('medium', 'short') }}
                 </small>
 
-                <p>{{ comment.text }}</p>
+                <p class="mt-2">{{ comment.text }}</p>
+
+                {% if comment.photofilename %}
+                    <img style="width:200px; height: 200px;" class="img-responsive" src="{{ asset('./images/' ~ comment.photofilename) }}" />
+                {% endif %}
+
             </div>
         {% endfor %}
 
@@ -34,7 +37,6 @@
         {% endif %}
 
     {% else %}
-        <div>No comments have been posted yet for this conference</div>
+        <div class="text-center">No comments have been posted yet for this conference</div>
     {% endif %}
-    <div class="container mb-3 mt-3 text-bg-primary">Helooooooooo</div>
 {% endblock %}
