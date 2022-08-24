@@ -14,12 +14,23 @@
         {% endblock %}
     </head>
     <body>
-        {% block body %}
-            <h2>Give your feedback!</h2>
+        <header>
+            <h1><a href="{{ path('homepage') }}">Guestbook</a></h1>
+            <ul>
+                {% for conference in conferences %}
+                    <li><a href="{{ path('conference', { slug: conference.slug}) }}">{{ conference }}</a></li>
+                {% endfor %}
+            </ul>
+            <hr />
+        </header>
+            {% block body %}
+                <div class="container">
+                    <h2>Give your feedback!</h2>
 
-            {% for conference in conferences %}
-                <h4>{{ conference }}</h4>
-            {% endfor %}
-        {% endblock %}
+                    {% for conference in conferences %}
+                        <h4>{{ conference }}</h4>
+                    {% endfor %}
+                </div>
+            {% endblock %}
     </body>
 </html>
